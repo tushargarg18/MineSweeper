@@ -3,15 +3,12 @@ import json
 
 class GridGenerator:
     def __init__(self, size=4, num_mines = 5):
-        if (size > num_mines + (size//2)):
-            self.size = size
-            self.num_mines = num_mines
-            self.grid = [[0 for _ in range(size)] for _ in range(size)]
-            self._place_mines()
-            self._calculate_adjacent_mines()
-            print(self.grid)
-        else:
-            print("The size and mine number is not valid")
+        self.size = size
+        self.num_mines = num_mines
+        self.grid = [[0 for _ in range(size)] for _ in range(size)]
+        self._place_mines()
+        self._calculate_adjacent_mines()
+        print(self.grid)
 
     def _place_mines(self):
         mine_pos = set()
@@ -42,10 +39,3 @@ class GridGenerator:
     def display(self):
         for row in self.grid:
             print(" ".join(str(cell) for cell in row))
-
-
-
-if __name__ == "__main__":
-    obj = GridGenerator(size=2, num_mines=5)
-    obj.display()
-    obj.save_grid()
